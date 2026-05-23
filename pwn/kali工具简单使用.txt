@@ -1,0 +1,34 @@
+1.ssh
+kali：
+	sudo systemctl start ssh
+win:
+	ssh kali@192.168.254.133
+
+2.nc
+监听
+kali：
+	nc -l -p 6666 -v
+win:
+	nc64.exe 192.168.254.133 6666
+
+发送文件 win->kali
+kali:
+	nc -l -p 6666 -v > 1.txt
+win:
+	nc64.exe 192.168.254.133 6666 < 1.txt
+
+3.nmap
+kali: 
+	nmap 192.168.254.133
+	nmap -Pn 172.26.232.43
+	sudo nmap -Pn -O -sV 172.26.232.43 -T4
+	sudo nmap -Pn -O -sV 172.26.232.43 -T4 -p 22
+	sudo nmap --script=vuln 192.168.254.131
+	sudo nmap --script=exploit 192.168.254.131
+	sudo nmap --script=dos 192.168.254.131 
+
+4.apache2
+kali:
+	sudo systemctl start apache2
+win:
+	浏览器：192.168.254.133
